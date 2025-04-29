@@ -1,16 +1,16 @@
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% tailwind_css %}
     <title>{% block title %} {{ diner.name }} {% endblock %}</title>
-    
 </head>
 <body>
     <header>
         {% block header %}
-        <h1>Welcome to Diners</h1>
+        <h1>Welcome to {{ diner.name }}</h1>
         {% endblock %}
     </header>
     <main>
@@ -20,7 +20,7 @@
     </main>
     <footer>
         {% block footer %}
-        <p>&copy; 2023 Diners. All rights reserved.</p>
+        <p>&copy; 2023 {{ diner.name }}. All rights reserved.</p>
         {% endblock %}
     </footer>
 </body>
