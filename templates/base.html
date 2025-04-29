@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{ diner.name }} {% endblock %}</title>
+    
+</head>
+<body>
+    <header>
+        {% block header %}
+        <h1>Welcome to Diners</h1>
+        {% endblock %}
+    </header>
+    <main>
+        {% block content %}
+        <!-- Main content -->
+        {% endblock %}
+    </main>
+    <footer>
+        {% block footer %}
+        <p>&copy; 2023 Diners. All rights reserved.</p>
+        {% endblock %}
+    </footer>
+</body>
+</html>
