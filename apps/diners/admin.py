@@ -10,6 +10,6 @@ class DinerAdmin(admin.ModelAdmin):
 
 @admin.register(QRCode)
 class QRCodeAdmin(admin.ModelAdmin):
-    list_display = ('diner', 'url')
+    list_display = ('diner', 'qr_url')
     search_fields = ('diner__name',)
 
