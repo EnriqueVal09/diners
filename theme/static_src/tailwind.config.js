@@ -4,7 +4,7 @@ module.exports = {
     '../templates/**/*.html',
     // Templates in other apps
     '../../templates/**/*.html',
-    '../../apps/templates/**/*.html',
+    '../../apps/**/templates/**/*.html',
     // Ignore files in node_modules
     '!../../**/node_modules',
     // Include JavaScript files that might contain Tailwind CSS classes
@@ -15,5 +15,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
 }
