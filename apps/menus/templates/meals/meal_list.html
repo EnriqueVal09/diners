@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Menú</h1>
+  <ul>
+    {% for meal in meals %}
+      <li>
+        <strong>{{ meal.name }}</strong><br>
+        {{ meal.description }}<br>
+        Precio: {{ meal.price }}
+      </li>
+    {% empty %}
+      <li>No hay comidas disponibles.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
