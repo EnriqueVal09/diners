@@ -4,9 +4,9 @@ from .models import Category, Meal, MealOption
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'parent', 'order')
+    list_display = ('name', 'diner', 'order')
     search_fields = ('name',)
-    list_filter = ('parent',)
+    list_filter = ('diner',)
 
 class MealOptionInlineAdmin(admin.TabularInline):
     model = MealOption
