@@ -14,7 +14,7 @@
     <header class="sticky top-0 z-50">
         <div class="navbar bg-base-100 shadow-md px-4 sm:px-8">
             <div class="flex-1">
-                <a class="btn btn-ghost text-xl font-bold" href="{% url 'meal-list' %}">
+                <a class="btn btn-ghost text-xl font-bold" href="{% url 'all-meal-list' %}">
                     <i class="fas fa-utensils mr-2"></i>
                     {{diner.name}}
                 </a>
@@ -32,7 +32,7 @@
                             <ul class="p-2 shadow-lg bg-base-100 rounded-box w-40">
                                 {% for category in categories %}
                                     {% if category.name != 'Bebidas' and category.parent_category.name != 'Bebidas' %}
-                                        <li><a href="#" class="hover:bg-base-200">{{ category.name }}</a></li>
+                                        <li><a href="" class="hover:bg-base-200">{{ category.name }}</a></li>
                                     {% endif %}
                                 {% endfor %}
                             </ul>
