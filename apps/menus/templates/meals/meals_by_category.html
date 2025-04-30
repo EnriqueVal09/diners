@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="mb-8">
+    <div class="divider">
+        <h2 class="text-2xl font-bold text-gray-800">{{ category.name }}</h2>
+    </div>
+    
+    {% if meals %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            {% for meal in meals %}
+                {% include "includes/meal_card.html" %}
+            {% endfor %}
+        </div>
+        
+        {% for subcategory in category.subcategories.all %}
+            <div class="ml-6 pl-6 border-l-2 border-gray-200">
+                {% include "includes/category_tree.html" with category=subcategory %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No hay platillos disponibles en esta categoría.</p>
+    {% endif %}
+  </div>
+{% endblock %}
