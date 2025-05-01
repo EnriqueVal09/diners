@@ -1,6 +1,6 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
-<html data-theme="coffee" lang="es">
+<html data-theme="abyss" lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,10 +9,13 @@
     <!-- Agregar íconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-base-100 text-base-content min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-base-100">
+    <!-- Patrón de fondo sutil -->
+    <div class="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-base-100/30 via-base-100/10 to-transparent"></div>
+    
     <!-- Navbar mejorado -->
-    <header class="sticky top-0 z-50">
-        <div class="navbar bg-base-100 shadow-md px-4 sm:px-8">
+    <header class="sticky top-0 z-50 backdrop-blur-sm bg-base-100/80">
+        <div class="navbar shadow-md px-4 sm:px-8">
             <div class="flex-1">
                 <a class="btn btn-ghost text-xl font-bold" href="{% url 'full-menu' %}">
                     <i class="fas fa-utensils mr-2"></i>
@@ -38,7 +41,7 @@
                         </details>
                     </li>
                     <!-- Bebidas -->
-                    {% if bebida_categories.all.count %}
+                    {% if bebida_categories %}
                         <li>
                             <details class="dropdown dropdown-end">
                                 <summary class="hover:bg-base-200">
@@ -68,23 +71,22 @@
                             <i class="fas fa-burger mr-2"></i> Menú
                         </li>
                         <div class="pl-4">
-                            {% for category in categories %}
+                            {% for category in menu_categories %}
                                 {% if category.name != 'Bebidas' and category.parent_category.name != 'Bebidas' %}
-                                    <li><a href="#" class="text-md hover:bg-base-200">{{ category.name }}</a></li>
+                                    <li><a href="{% url 'meals_by_category' category.id %}">{{ category.name }}</a></a></li>
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        
-                        <li class="menu-title text-lg pt-4">
-                            <i class="fas fa-glass-water mr-2"></i> Bebidas
-                        </li>
-                        <div class="pl-4">
-                            {% for category in categories %}
-                                {% if category.parent_category.name == 'Bebidas' %}
-                                    <li><a href="#" class="text-md hover:bg-base-200">{{ category.name }}</a></li>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
+                        {% if bebida_categories %}
+                            <li class="menu-title text-lg pt-4">
+                                <i class="fas fa-glass-water mr-2"></i> Bebidas
+                            </li>
+                            <div class="pl-4">
+                                {% for category in bebida_categories %}
+                                    <li><a href="{% url 'meals_by_category' category.id %}">{{ category.name }}</a></li>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -92,7 +94,7 @@
     </header>
 
     <!-- Contenido principal -->
-    <main class="flex-grow container mx-auto px-4 py-6">
+    <main class="flex-grow container mx-auto px-4 py-6 bg-base-200/50 rounded-lg shadow-sm my-4">
         
         {% block content %}
         <!-- Aquí va el contenido específico de cada vista -->
@@ -101,7 +103,7 @@
     </main>
 
     <!-- Footer mejorado -->
-    <footer class="footer bg-base-200 text-base-content p-10 mt-10">
+    <footer class="footer bg-base-200 text-base-content p-10 mt-10 border-t border-base-300">
         <div class="max-w-7xl mx-auto w-full">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
