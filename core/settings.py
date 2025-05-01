@@ -34,6 +34,7 @@ PROJECT_APPS = [
     'apps.diners',
     'apps.menus',
     'theme',
+    'apps.promos',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
