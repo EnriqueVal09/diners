@@ -1,6 +1,6 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
-<html data-theme="lofi" lang="es">
+<html data-theme="coffee" lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,7 +14,7 @@
     <header class="sticky top-0 z-50">
         <div class="navbar bg-base-100 shadow-md px-4 sm:px-8">
             <div class="flex-1">
-                <a class="btn btn-ghost text-xl font-bold" href="{% url 'all-meal-list' %}">
+                <a class="btn btn-ghost text-xl font-bold" href="{% url 'full-menu' %}">
                     <i class="fas fa-utensils mr-2"></i>
                     {{diner.name}}
                 </a>
@@ -24,34 +24,34 @@
             <div class="flex-none hidden sm:block">
                 <ul class="menu menu-horizontal px-16 gap-1">
                     <li><a href="#" class="hover:bg-base-200"><i class="fas fa-tag mr-1"></i> Promociones</a></li>
+                    <!-- Menú general -->
                     <li>
                         <details class="dropdown dropdown-end">
                             <summary class="hover:bg-base-200">
                                 <i class="fas fa-burger mr-1"></i> Menú
                             </summary>
                             <ul class="p-2 shadow-lg bg-base-100 rounded-box w-40">
-                                {% for category in categories %}
-                                    {% if category.name != 'Bebidas' and category.parent_category.name != 'Bebidas' %}
-                                        <li><a href="" class="hover:bg-base-200">{{ category.name }}</a></li>
-                                    {% endif %}
+                                {% for category in menu_categories %}
+                                    <li><a href="{% url 'meals_by_category' category.id %}">{{ category.name }}</a></li>
                                 {% endfor %}
                             </ul>
                         </details>
                     </li>
-                    <li>
-                        <details class="dropdown dropdown-end">
-                            <summary class="hover:bg-base-200">
-                                <i class="fas fa-glass-water mr-1"></i> Bebidas
-                            </summary>
-                            <ul class="p-2 shadow-lg bg-base-100 rounded-box w-35">
-                                {% for category in categories %}
-                                    {% if category.parent_category.name == 'Bebidas' %}
-                                        <li><a href="#" class="hover:bg-base-200">{{ category.name }}</a></li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        </details>  
-                    </li>
+                    <!-- Bebidas -->
+                    {% if bebida_categories.all.count %}
+                        <li>
+                            <details class="dropdown dropdown-end">
+                                <summary class="hover:bg-base-200">
+                                    <i class="fas fa-glass-water mr-1"></i> Bebidas
+                                </summary>
+                                <ul class="p-2 shadow-lg bg-base-100 rounded-box w-35">
+                                    {% for category in bebida_categories %}
+                                        <li><a href="{% url 'meals_by_category' category.id %}">{{ category.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </details>  
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
             
