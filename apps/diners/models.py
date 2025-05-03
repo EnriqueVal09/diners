@@ -23,7 +23,7 @@ class QRCode(models.Model):
     def __str__(self):
         return f"QR de {self.diner.name}"
     
-class SocialMedia(models.Model):
+class SocialMediaURL(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     diner = models.ForeignKey(Diner, on_delete=models.CASCADE, related_name="social_media_urls", verbose_name="Restaurante")
     name = models.CharField("red social", max_length=50)

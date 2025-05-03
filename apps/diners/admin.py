@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Diner, QRCode, SocialMedia
+from .models import Diner, QRCode, SocialMediaURL
 
 class QRCodeInlineAdmin(admin.TabularInline):
     model = QRCode
@@ -13,8 +13,8 @@ class DinerAdmin(admin.ModelAdmin):
     ordering = ('name',)
     inlines = [QRCodeInlineAdmin]
 
-@admin.register(SocialMedia)
-class SocialMediaAdmin(admin.ModelAdmin):
+@admin.register(SocialMediaURL)
+class SocialMediaURLAdmin(admin.ModelAdmin):
     list_display = ('name', 'diner', 'url')
     search_fields = ('name', 'diner__name')
     list_filter = ('diner',)
