@@ -1,6 +1,6 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
-<html data-theme="abyss" lang="es">
+<html data-theme="{{diner.theme}}" lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -121,16 +121,13 @@
                         <i class="fas fa-utensils mr-2"></i> {{ diner.name }}
                     </h3>
                     <p class="mt-2">Deliciosa comida para todos los gustos.</p>
+
                     <div class="flex gap-4 mt-4">
-                        <a class="btn btn-circle btn-ghost">
-                            <i class="fab fa-x text-lg"></i>
+                        {% for url in social_media_urls %}
+                        <a class="btn btn-circle btn-ghost" href="{{ url.url }}">
+                            <i class="fab fa-{{url.name}} text-lg"></i>
                         </a>
-                        <a class="btn btn-circle btn-ghost">
-                            <i class="fab fa-instagram text-lg"></i>
-                        </a>
-                        <a class="btn btn-circle btn-ghost">
-                            <i class="fab fa-tiktok text-lg"></i>
-                        </a>
+                        {% endfor %}
                     </div>
                 </div>
                 
@@ -146,9 +143,9 @@
                 <div>
                     <h3 class="footer-title">Contacto</h3>
                     <ul class="space-y-2">
-                        <li><i class="fas fa-map-marker-alt mr-2"></i> Dirección: Calle Principal #123</li>
-                        <li><i class="fas fa-phone mr-2"></i> Teléfono: (123) 456-7890</li>
-                        <li><i class="fas fa-envelope mr-2"></i> Email: contacto@{{ diner.name|lower }}.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Dirección: {{ diner.address }} </li>
+                        <li><i class="fas fa-phone mr-2"></i> Teléfono: {{ diner.phone_number }} </li>
+                        <li><i class="fas fa-envelope mr-2"></i> Email: {{ diner.email }} </li>
                     </ul>
                 </div>
             </div>

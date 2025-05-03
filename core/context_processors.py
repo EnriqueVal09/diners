@@ -1,4 +1,4 @@
-from apps.diners.models import Diner
+from apps.diners.models import Diner, SocialMediaURL
 from apps.menus.models import Category
 
 def diner_context(request):
@@ -35,3 +35,10 @@ def category_context(request):
         "bebida_categories": bebida_categories,
     }
 
+def social_media_url_context(request):
+    try:
+        diner = Diner.objects.first()  # Si siempre es 1 restaurante activo
+        social_media_urls = SocialMediaURL.objects.filter(diner=diner)
+    except:
+        social_medias = []
+    return {"social_media_urls": social_media_urls}
