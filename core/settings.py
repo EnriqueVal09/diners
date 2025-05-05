@@ -1,7 +1,14 @@
 from pathlib import Path
+import environ
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+
+CLOUDINARY_URL = env('CLOUDINARY_URL')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -139,12 +146,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = "/media/"
 #MEDIA_ROOT = BASE_DIR / "media"
 
-# Cloudinary settings
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dlgxb2y9x',
-    'API_KEY': '774193239876111',
-    'API_SECRET': 'lxc6pYXliEKynLwpudxPFZqxwnA'
-}
+# Storage settings
 
 STORAGES = {
     "default": {

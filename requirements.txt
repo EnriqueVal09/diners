@@ -2,3 +2,4 @@ Django==5.2
 pillow==11.2.1
 django-tailwind==4.0.1
 django-cloudinary-storage==0.3.0
+django-environ==0.12.0
