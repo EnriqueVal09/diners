@@ -28,6 +28,8 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'tailwind',
     'django_browser_reload',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 PROJECT_APPS = [
@@ -135,4 +137,21 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+#MEDIA_ROOT = BASE_DIR / "media"
+
+# Cloudinary settings
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dlgxb2y9x',
+    'API_KEY': '774193239876111',
+    'API_SECRET': 'lxc6pYXliEKynLwpudxPFZqxwnA'
+}
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
