@@ -10,7 +10,7 @@ def diner_context(request):
 
 def category_context(request):
     try:
-        categories = Category.objects.all()
+        categories = Category.objects.filter(diner=Diner.objects.first())
         bebidas_category = categories.filter(name="Bebidas").first()
 
         if bebidas_category:

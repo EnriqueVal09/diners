@@ -28,7 +28,7 @@ class Meal(models.Model):
     description = models.TextField("Descripción")
     price = models.DecimalField("Precio", max_digits=8, decimal_places=2)
     available = models.BooleanField("Disponible", default=True)
-    image_url = models.URLField("URL de imagen del platillo", blank=True, null=True)
+    image_url = models.ImageField("URL de imagen del platillo", upload_to="platillos", blank=True, null=True)
 
     def __str__(self):
         return self.name

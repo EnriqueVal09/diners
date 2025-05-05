@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.shortcuts import get_object_or_404
 
 from .models import Meal, Category
 from apps.diners.models import Diner
@@ -35,6 +36,6 @@ class MealByCategoryListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # Agregamos la categoría para mostrar su nombre en el template
-        context['category'] = Category.objects.get(id=self.kwargs.get('category_id'))
+        context['category'] = get_object_or_404(Category, id=self.kwargs.get('category_id'))
         return context
 
