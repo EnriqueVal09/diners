@@ -31,7 +31,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     'tailwind',
-    'django_browser_reload',
+    #'django_browser_reload',
     'cloudinary_storage',
     'cloudinary',
 ]
@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
+    #"django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
