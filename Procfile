@@ -1,1 +1,1 @@
-web: python manage.py tailwind build && python manage.py migrate && gunicorn myproject.wsgi
+web: python manage.py tailwind build && python manage.py migrate && gunicorn core.wsgi
