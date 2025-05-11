@@ -15,3 +15,4 @@ class PromoListView(ListView):
             diner=diner, 
             active=True
             ).order_by("-created_at").prefetch_related("diner")
+    

@@ -1,0 +1,42 @@
+<div class="carousel w-full rounded-box shadow-xl overflow-hidden">
+  {% for promo in promos %}
+    {% if promo.image_url.name %}
+      <div id="slide{{ forloop.counter }}" class="carousel-item relative w-full snap-start">
+        <div class="relative w-full md:h-[32rem] flex items-center">
+          <!-- Imagen del carrusel -->
+          <img src="{{ promo.image_url.url }}" 
+              alt="{{ promo.title|default:'Promoción' }}" 
+              class="w-full h-full object-cover object-center" />
+          
+          <!-- Flechas de navegación mejoradas -->
+          <div class="absolute inset-0 flex items-center justify-between px-4">
+            <a href="#slide{% if forloop.first %}{{ promos|length }}{% else %}{{ forloop.counter0 }}{% endif %}" 
+              class="btn btn-circle glass opacity-70 hover:opacity-100 transition-opacity ml-4">
+              ❮
+            </a>
+            <a href="#slide{% if forloop.last %}1{% else %}{{ forloop.counter|add:'1' }}{% endif %}" 
+              class="btn btn-circle glass opacity-70 hover:opacity-100 transition-opacity mr-4">
+              ❯
+            </a>
+          </div>
+          <!-- Indicadores de posición -->
+          <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+            {% for item in promos %}
+            <a href="#slide{{ forloop.counter }}" 
+              class="w-3 h-3 rounded-full {% if forloop.counter == forloop.parentloop.counter %}bg-primary{% else %}bg-base-300{% endif %}">
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<style>
+  /* Estilo para prevenir el salto */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem; /* Ajusta según la altura de tu navbar */
+  }
+</style>
