@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from .models import Meal, Category
 from apps.diners.models import Diner
 
-class CategoryListView(ListView):
+class CategoryMealsListView(ListView):
     model = Category
     template_name = "meals/full_menu.html"
     context_object_name = "categories"
