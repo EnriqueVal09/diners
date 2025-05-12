@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="min-h-screen bg-base-100 flex items-center justify-center px-4">
+    <div class="text-center">
+        <!-- Icono de búsqueda (para el 404) -->
+        <div class="mb-6 inline-flex items-center justify-center w-24 h-24 rounded-full bg-warning/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-warning" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        
+        <!-- Texto del error -->
+        <h1 class="text-6xl font-bold text-warning mb-4">404</h1>
+        <h2 class="text-3xl font-semibold mb-4">Página no encontrada</h2>
+        
+        <div class="max-w-md mx-auto">
+            <p class="text-lg opacity-80 mb-6">Lo sentimos, no pudimos encontrar la página que estás buscando.</p>
+            <p class="text-sm opacity-60 mb-8">Puede que la URL sea incorrecta o que la página se haya movido.</p>
+            
+            <!-- Botón con animación -->
+            <a href="/" class="btn btn-primary btn-wide transition-all duration-300 transform hover:scale-105">
+                Volver al inicio
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            
+            {% comment %} <!-- Sugerencia adicional -->
+            <div class="mt-8 text-sm opacity-60">
+                <p>¿Buscas algo en particular?</p>
+                <a href="/contacto" class="link link-hover">Contáctanos para ayuda</a>
+            </div> {% endcomment %}
+        </div>
+    </div>
+</div>
+{% endblock %}
